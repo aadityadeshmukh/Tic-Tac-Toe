@@ -23,5 +23,7 @@ body {
   justify-content: center;
 }
 
-/* .innerPara {
-} */
+.innerPara {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 42px;
+}
