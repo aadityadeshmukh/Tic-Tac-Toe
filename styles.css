@@ -18,4 +18,10 @@ body {
 }
 .myGrid > div {
   background: gray;
+  display: grid;
+  align-content: center;
+  justify-content: center;
 }
+
+/* .innerPara {
+} */
