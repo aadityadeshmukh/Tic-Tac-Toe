@@ -1,5 +1,5 @@
 body {
-  background: orange;
+  background: #fcdebe;
   display: grid;
   justify-content: center;
   align-content: center;
@@ -17,7 +17,7 @@ body {
   border: 1 px solid black;
 }
 .myGrid > div {
-  background: gray;
+  background: #3a445d;
   display: grid;
   align-content: center;
   justify-content: center;
