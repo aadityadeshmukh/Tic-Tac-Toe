@@ -3,7 +3,7 @@ let clickCount = 0;
 function blockSelect(element) {
   clickCount++;
   console.log(element);
-  if (element.innerHTML !== 'X') {
+  if (element.innerHTML === '') {
     let innerPara = document.createElement('p');
     innerPara.setAttribute('class', 'innerPara');
     if (clickCount % 2 == 0) {
