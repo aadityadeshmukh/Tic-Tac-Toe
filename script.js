@@ -16,3 +16,9 @@ function blockSelect(element) {
     element.appendChild(innerPara);
   } else console.log('Select again!');
 }
+const Player = name => {
+  const getName = () => name;
+  return { getName };
+};
+let human = Player('Wretched Human');
+console.log(human.getName());
