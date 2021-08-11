@@ -1,7 +1,9 @@
 console.log('hello!');
 const Deck = () => {
-  let selection = {};
-  const addSelection = selection => {
+  let selection = [];
+  const addSelection = selected => {
+    console.log(selected);
+    selection.push(selected);
     console.log(selection);
   };
   return { addSelection };
