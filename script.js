@@ -1,4 +1,5 @@
 console.log('hello!');
+//Deck module
 const Deck = () => {
   let selection = [];
   const addSelection = selected => {
@@ -8,7 +9,9 @@ const Deck = () => {
   };
   return { addSelection };
 };
+//instantiate deck
 let playDeck = Deck();
+//Event to add X-Os on the deck UI
 let clickCount = 0;
 function blockSelect(element) {
   clickCount++;
@@ -28,11 +31,13 @@ function blockSelect(element) {
     playDeck.addSelection(selectedElem);
   } else console.log('Select again!');
 }
-
+//------------------------------------------------------------
+//the player module
 const Player = name => {
   const getName = () => name;
   return { getName };
 };
+//lets play!
 let human = Player('Wretched Human');
 let computer = Player('Silicon God');
 console.log(human.getName());
