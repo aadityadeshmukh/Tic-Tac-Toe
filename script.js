@@ -9,9 +9,12 @@ const Deck = () => {
     console.log(typeof selected);
     let idToRem = availablePlaces.indexOf(parseInt(selected));
     availablePlaces.splice(idToRem, 1);
-    console.log(availablePlaces);
+    // console.log(availablePlaces);
   };
-  return { addSelection };
+  const getAvailability = () => {
+    return availablePlaces;
+  };
+  return { addSelection, getAvailability };
 };
 //instantiate deck
 let playDeck = Deck();
@@ -33,6 +36,7 @@ function blockSelect(element) {
     element.appendChild(innerPara);
     let selectedElem = element.getAttribute('data-griditem');
     playDeck.addSelection(selectedElem);
+    console.log(playDeck.getAvailability());
   } else console.log('Select again!');
 }
 //------------------------------------------------------------
