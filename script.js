@@ -1,15 +1,11 @@
-console.log('hello!');
 //Deck module
 const Deck = () => {
   let availablePlaces = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   let selection = [];
   const addSelection = selected => {
-    console.log(selected);
     selection.push(selected);
-    console.log(typeof selected);
     let idToRem = availablePlaces.indexOf(parseInt(selected));
     availablePlaces.splice(idToRem, 1);
-    // console.log(availablePlaces);
   };
   const getAvailability = () => {
     return availablePlaces;
