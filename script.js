@@ -14,6 +14,20 @@ const Deck = () => {
 };
 //instantiate deck
 let playDeck = Deck();
+//the player module
+const Player = name => {
+  let selection = [];
+  const getName = () => name;
+  const addSelection = selected => {
+    selection.push(selected);
+  };
+  return { getName, addSelection, selection };
+};
+//lets play!
+let human = Player('Wretched Human');
+let computer = Player('Silicon God');
+console.log(human.getName());
+console.log(computer.getName());
 //Event to add X-Os on the deck UI
 let clickCount = 0;
 function blockSelect(element) {
@@ -29,6 +43,7 @@ function blockSelect(element) {
     element.appendChild(innerPara);
     let selectedElem = element.getAttribute('data-griditem');
     playDeck.addSelection(selectedElem);
+    human.addSelection(selectedElem);
     let availablePlaces = playDeck.getAvailability();
     //Let Player 2 select
     console.log(availablePlaces.length);
@@ -45,18 +60,9 @@ function blockSelect(element) {
       p2Sel.appendChild(p2Para);
       selectedElem = p2Sel.getAttribute('data-griditem');
       playDeck.addSelection(selectedElem);
+      computer.addSelection(selectedElem);
       console.log(playDeck.getAvailability());
     }
   } else console.log('Select again!');
 }
 //------------------------------------------------------------
-//the player module
-const Player = name => {
-  const getName = () => name;
-  return { getName };
-};
-//lets play!
-let human = Player('Wretched Human');
-let computer = Player('Silicon God');
-console.log(human.getName());
-console.log(computer.getName());
