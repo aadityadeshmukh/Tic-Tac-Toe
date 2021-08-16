@@ -6,6 +6,10 @@ const Deck = () => {
     selection.push(selected);
     let idToRem = availablePlaces.indexOf(parseInt(selected));
     availablePlaces.splice(idToRem, 1);
+    // if(selection.length >= 5) //Probability of a game over starts from 5th selection
+    // {
+
+    // }
   };
   const getAvailability = () => {
     return availablePlaces;
