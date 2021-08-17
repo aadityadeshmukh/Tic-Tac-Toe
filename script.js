@@ -1,4 +1,14 @@
 //Deck module
+let winningCombos = [
+  ['1', '2', '3'],
+  [4, 5, 6],
+  [7, 8, 9],
+  ['1', '4', '7'],
+  [2, 5, 8],
+  [3, 6, 9],
+  [1, 5, 9],
+  [3, 5, 7]
+];
 const Deck = () => {
   let availablePlaces = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   let selection = [];
@@ -6,15 +16,27 @@ const Deck = () => {
     selection.push(selected);
     let idToRem = availablePlaces.indexOf(parseInt(selected));
     availablePlaces.splice(idToRem, 1);
-    // if(selection.length >= 5) //Probability of a game over starts from 5th selection
-    // {
-
-    // }
   };
   const getAvailability = () => {
     return availablePlaces;
   };
-  return { addSelection, getAvailability };
+  const checkWinner = (p1, p2) => {
+    console.log(p1, p2);
+    if (p1.selection.length >= 3) {
+      console.log('p1 eligible for check');
+      tallyCombos(p1.selection);
+    }
+  };
+  const tallyCombos = selArray => {
+    console.log(selArray);
+    let ifwin = false;
+    for (let i = 0; i < winningCombos.length; i++) {
+      console.log();
+      ifwin = winningCombos[i].every((val, index) => val === selArray[index]);
+      if (ifwin) console.log('Winner found');
+    }
+  };
+  return { addSelection, getAvailability, checkWinner };
 };
 //instantiate deck
 let playDeck = Deck();
@@ -49,6 +71,9 @@ function blockSelect(element) {
     playDeck.addSelection(selectedElem);
     human.addSelection(selectedElem);
     let availablePlaces = playDeck.getAvailability();
+    if (availablePlaces.length < 5) {
+      playDeck.checkWinner(human, computer);
+    }
     //Let Player 2 select
     console.log(availablePlaces.length);
     if (availablePlaces.length > 0) {
