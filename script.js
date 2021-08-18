@@ -21,11 +21,14 @@ const Deck = () => {
     return availablePlaces;
   };
   const checkWinner = (p1, p2) => {
+    let winnerfound = false;
     console.log(p1, p2);
     if (p1.selection.length >= 3) {
       console.log('p1 eligible for check');
-      tallyCombos(p1.selection);
+      winnerfound = tallyCombos(p1.selection);
     }
+    console.log(`checkwinner -> ${winnerfound}`);
+    return winnerfound;
   };
   const tallyCombos = selArray => {
     console.log(selArray);
@@ -33,7 +36,7 @@ const Deck = () => {
     for (let i = 0; i < winningCombos.length; i++) {
       console.log();
       ifwin = winningCombos[i].every((val, index) => val === selArray[index]);
-      if (ifwin) console.log('Winner found');
+      return ifwin;
     }
   };
   return { addSelection, getAvailability, checkWinner };
@@ -71,12 +74,15 @@ function blockSelect(element) {
     playDeck.addSelection(selectedElem);
     human.addSelection(selectedElem);
     let availablePlaces = playDeck.getAvailability();
+    let winnerfound = 0;
     if (availablePlaces.length < 5) {
-      playDeck.checkWinner(human, computer);
+      winnerfound = playDeck.checkWinner(human, computer);
+      console.log(winnerfound);
+      if (winnerfound) availablePlaces = [];
     }
     //Let Player 2 select
     console.log(availablePlaces.length);
-    if (availablePlaces.length > 0) {
+    if (availablePlaces.length > 0 && !winnerfound) {
       let randomIndex = Math.floor(Math.random() * availablePlaces.length);
       console.log(randomIndex);
       let randomElem = availablePlaces[randomIndex];
