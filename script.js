@@ -81,7 +81,10 @@ function blockSelect(element) {
       if (availablePlaces.length < 5) {
         winnerfound = playDeck.checkWinner(human, computer);
         console.log(winnerfound);
-        if (winnerfound) availablePlaces = [];
+        if (winnerfound) {
+          availablePlaces = [];
+          console.log('Match Over!');
+        }
       }
       //Let Player 2 select
       console.log(availablePlaces.length);
