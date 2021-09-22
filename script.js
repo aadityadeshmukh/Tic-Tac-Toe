@@ -37,8 +37,9 @@ const Deck = () => {
     for (let i = 0; i < winningCombos.length; i++) {
       console.log();
       ifwin = winningCombos[i].every((val, index) => val === selArray[index]);
-      return ifwin;
+      if (ifwin) return ifwin;
     }
+    return ifwin;
   };
   return { addSelection, getAvailability, checkWinner };
 };
